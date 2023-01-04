@@ -30,6 +30,7 @@ const handleOnSearchChange = (searchData) => {
 
       setCurrentWeather({city: searchData.label, ...weatherResponse});
       setCurrentForecast({city:searchData.label, ...forecastResponse})
+      console.log(currentWeather);
     })
     .catch((err)=> console.log(err));
 }
