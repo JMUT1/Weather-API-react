@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { geoApiOptions, GEO_API_URL } from "../../api";
-
 const Search = ({ onSearchChange }) => {
   // USE STATE TO GET THE VALUE OF THE INPUT
   const [search, setSearch] = useState(null);
@@ -12,6 +11,7 @@ const Search = ({ onSearchChange }) => {
     onSearchChange(searchData);
   };
 
+  // THE CALL TO THE API TO GET THE LABEL, LATITUDE AND LONGITUDE OF THE CITY
   const loadOptions = (inputValue) => {
     return fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions)
 
@@ -31,6 +31,7 @@ const Search = ({ onSearchChange }) => {
   };
 
 
+  // DEBONCE = HACE LA BUSQUEDA HASTA EL TIEMPO QUE LE PASEMOS
   return (
     <AsyncPaginate
       placeholder="Search for city"
